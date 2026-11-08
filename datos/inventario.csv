@@ -1,0 +1,13 @@
+codigo,nombre,categoria,precio,stock
+PAN001,Pan Francés,Panadería,1.50,80
+PAN002,Pan Dulce,Panadería,2.00,60
+PAN003,Concha,Vienería,3.50,40
+PAN004,Croissant,Vienería,6.00,30
+PAN005,Donut Glaseada,Repostería,4.50,35
+PAN006,Pastel de Chocolate,Pasteles,85.00,10
+PAN007,Pastel de Vainilla,Pasteles,75.00,12
+PAN008,Empanada de Manzana,Repostería,5.00,25
+PAN009,Cheesecake,Pasteles,90.00,8
+PAN010,Pan Integral,Panadería,3.00,45
+PAN011,Roles de Canela,Vienería,7.00,20
+PAN012,Muffin de Chocolate,Repostería,5.50,28
