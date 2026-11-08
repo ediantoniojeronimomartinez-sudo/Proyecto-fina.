@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+actor "Encargado" as E
+
+rectangle "Sistema de Inventario y Ventas - Panadería" {
+  usecase "Agregar producto" as UC1
+  usecase "Buscar producto" as UC2
+  usecase "Registrar venta" as UC3
+  usecase "Validar stock" as UC4
+  usecase "Aplicar descuento por volumen" as UC5
+  usecase "Mostrar inventario ordenado" as UC6
+  usecase "Generar reporte de ventas" as UC7
+  usecase "Guardar cambios" as UC8
+}
+
+E --> UC1
+E --> UC2
+E --> UC3
+E --> UC6
+E --> UC7
+E --> UC8
+
+UC3 .> UC4 : <<include>>
+UC3 .> UC5 : <<include>>
+@enduml

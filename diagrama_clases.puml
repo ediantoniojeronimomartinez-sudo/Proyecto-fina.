@@ -1,0 +1,86 @@
+@startuml
+abstract class ReglaNegocio {
+  - _nombre: str
+  + aplicar(subtotal: float, cantidad: int): float
+}
+
+class DescuentoPorVolumen {
+  + aplicar(subtotal: float, cantidad: int): float
+}
+
+class PrecioNormal {
+  + aplicar(subtotal: float, cantidad: int): float
+}
+
+class Producto {
+  - _codigo: str
+  - _nombre: str
+  - _categoria: str
+  - _precio: float
+  - _stock: int
+  + codigo: str
+  + nombre: str
+  + categoria: str
+  + precio: float
+  + stock: int
+  + disminuir_stock(cantidad: int)
+  + __str__()
+  + __repr__()
+  + __eq__(otro)
+}
+
+class Venta {
+  + codigo_producto: str
+  + nombre_producto: str
+  + cantidad: int
+  + precio_unitario: float
+  + total: float
+  + fecha: str
+}
+
+class Inventario {
+  - _productos: dict
+  - _categorias: set
+  - _ventas: list
+  + agregar_producto(producto)
+  + buscar(texto)
+  + obtener_producto(codigo)
+  + registrar_venta(codigo, cantidad, regla)
+  + productos_ordenados(criterio)
+  + reporte_ventas()
+}
+
+class RepositorioCSV {
+  - _ruta: Path
+  + cargar()
+  + guardar(productos)
+}
+
+class Bitacora {
+  - _ruta: Path
+  + registrar(venta)
+}
+
+class ReporteVentas {
+  + mostrar(ventas)
+}
+
+class SistemaInventario {
+  - _inventario: Inventario
+  - _repositorio: RepositorioCSV
+  - _bitacora: Bitacora
+  - _regla: ReglaNegocio
+  + ejecutar()
+}
+
+ReglaNegocio <|-- DescuentoPorVolumen
+ReglaNegocio <|-- PrecioNormal
+Inventario o-- Producto
+Inventario o-- Venta
+Inventario --> ReglaNegocio
+SistemaInventario *-- Inventario
+SistemaInventario *-- RepositorioCSV
+SistemaInventario *-- Bitacora
+SistemaInventario --> ReglaNegocio
+ReporteVentas --> Venta
+@enduml
